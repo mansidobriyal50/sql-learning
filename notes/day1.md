@@ -1,0 +1,1 @@
+Setup complete. Python, Git, DuckDB working.
