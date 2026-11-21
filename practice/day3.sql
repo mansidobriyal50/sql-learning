@@ -26,7 +26,7 @@ SELECT * FROM(
     WHERE salary IS NOT NULL
 ) t
 WHERE rnk<=2;
---4. Each employee’s salary minus their department average.
+--4. Each employees salary minus their department average.
 SELECT name, department, salary,
 salary - AVG(salary) OVER(PARTITION BY department) AS diff_from_avg
 FROM employees;
@@ -35,7 +35,7 @@ SELECT name, hire_date, salary, SUM(salary) OVER(
     ORDER BY hire_date
 ) AS running_total
 FROM employees;
---6. Each employee’s previous and next hire’s salary (LAG and LEAD by hire_date).
+--6. Each employees previous and next hires salary (LAG and LEAD by hire_date).
 SELECT name, salary, LAG(salary) OVER(
     ORDER BY hire_date
 ) AS previous_salary
