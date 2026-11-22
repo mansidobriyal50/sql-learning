@@ -1,3 +1,4 @@
+--Day 3: Window functions
 -- 1. Rank employees by salary within each department using ROW_NUMBER, RANK, and DENSE_RANK side by side.
 SELECT name, department, salary,
 ROW_NUMBER() OVER(PARTITION BY department ORDER BY salary DESC) AS row_num,
