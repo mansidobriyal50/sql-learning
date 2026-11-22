@@ -1,5 +1,5 @@
 --1.Top earner per department (rewrite your day 3 Q2 using a CTE).
-WITH rank AS(
+WITH ranked AS(
     SELECT *,
     ROW_NUMBER() OVER(
         PARTITION BY department
@@ -8,7 +8,7 @@ WITH rank AS(
     FROM employees
     WHERE salary IS NOT NULL
 )
-SELECT * FROM rank
+SELECT * FROM ranked
 WHERE rn=1;
 --2.Top 2 earners per department.
 WITH ranked AS(
@@ -23,14 +23,14 @@ WITH ranked AS(
 SELECT * FROM ranked
 WHERE rn<=2;
 --3.Second highest salary overall. Try it with DENSE_RANK in a CTE.
-WITH rank AS(
+WITH ranked AS(
     SELECT *,
     DENSE_RANK() OVER(
         ORDER BY salary DESC
     ) rnk
     FROM employees
 )
-SELECT * FROM rank
+SELECT * FROM ranked
 WHERE rnk=2;
 --4.Employees earning above their department average. 
 WITH dept_avg AS(
